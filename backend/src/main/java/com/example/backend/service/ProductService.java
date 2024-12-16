@@ -27,6 +27,11 @@ public class ProductService {
         return repo.findById(id).orElse(null);
     }
 
+    //updates an existing record
+    public Product updateProduct(Product product) {
+        return repo.save(product);
+    }
+
     //deletes a product record by id
     public void deleteProductById(int id) {
         repo.deleteById(id);

@@ -44,6 +44,13 @@ public class ProductController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+    //endpoint to update an existing student
+    @PutMapping("/product")
+    public ResponseEntity<Product> updateStudent(@RequestBody Product product) {
+        Product updatedProduct = service.updateProduct(product);
+        return ResponseEntity.ok(updatedProduct); // Returns the updated product
+    }
+
     //endpoint to delete a product by id
     @DeleteMapping("/product/{id}")
     public ResponseEntity<Void> deleteProductById(@PathVariable int id){
