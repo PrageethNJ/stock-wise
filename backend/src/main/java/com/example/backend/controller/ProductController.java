@@ -43,4 +43,13 @@ public class ProductController {
         else
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+
+    //endpoint to delete a product by id
+    @DeleteMapping("/product/{id}")
+    public ResponseEntity<Void> deleteProductById(@PathVariable int id){
+        service.deleteProductById(id);
+        return ResponseEntity.accepted().build(); // Returns 202 No Content
+        //return ResponseEntity.noContent().build(); // Returns 204 No Content
+    }
+
 }
