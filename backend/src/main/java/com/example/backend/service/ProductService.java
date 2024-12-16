@@ -26,4 +26,9 @@ public class ProductService {
     public Product getProductById(int id) {
         return repo.findById(id).orElse(null);
     }
+
+    //updates an existing record
+    public Product updateProduct(Product product) {
+        return repo.save(product);
+    }
 }

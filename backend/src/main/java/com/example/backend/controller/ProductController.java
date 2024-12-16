@@ -43,4 +43,11 @@ public class ProductController {
         else
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+
+    //endpoint to update an existing student
+    @PutMapping("/product")
+    public ResponseEntity<Product> updateStudent(@RequestBody Product product) {
+        Product updatedProduct = service.updateProduct(product);
+        return ResponseEntity.ok(updatedProduct); // Returns the updated product
+    }
 }
