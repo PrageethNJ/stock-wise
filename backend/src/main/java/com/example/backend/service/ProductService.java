@@ -5,6 +5,8 @@ import com.example.backend.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service //indicates that this class is a service component in the Spring context
 public class ProductService {
     @Autowired //automatically injects the ProductRepository bean
@@ -13,5 +15,15 @@ public class ProductService {
     //saves a new product record to the database
     public Product addProduct(Product product) {
         return repo.save(product);
+    }
+
+    //fetches all products from the database
+    public List<Product> getAllProducts() {
+        return repo.findAll();
+    }
+
+    //fetch a product by their id; returns null if not found
+    public Product getProductById(int id) {
+        return repo.findById(id).orElse(null);
     }
 }
