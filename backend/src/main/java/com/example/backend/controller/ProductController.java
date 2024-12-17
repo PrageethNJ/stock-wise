@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController //indicates that this class is a REST controller
+@CrossOrigin //to give access to react frontend to fetch data to solve cross-origin resource sharing error
 @RequestMapping("/api") //base URL for all product-related endpoints
 public class ProductController {
     @Autowired //automatically injects the ProductService bean
