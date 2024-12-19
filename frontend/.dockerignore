@@ -1,0 +1,41 @@
+# Node modules and dependencies
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Docker-specific files
+Dockerfile
+.dockerignore
+
+# Git and version control
+.git
+.gitignore
+
+# Production build output (you are not building in this case)
+dist
+dist-ssr
+
+# Local environment files
+.env
+.env.local
+.env.*.local
+
+# Editor and IDE files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+
+# Operating System files
+Thumbs.db
+*.swp
+*.swo
+*.swn
+*.swo
+
+# Miscellaneous
+*.log
+*.tmp
+*.pid
