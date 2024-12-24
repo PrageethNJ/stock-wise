@@ -4,6 +4,9 @@ import { useNavigate } from 'react-router-dom';
 
 function CreateProduct() {
   const [name, setName] = useState('');
+  const [brand, setBrand] = useState('');
+  const [price, setPrice] = useState('');
+  const [category, setCategory] = useState('');
   const [description, setDescription] = useState('');
   const navigate = useNavigate();
 
@@ -18,7 +21,7 @@ function CreateProduct() {
 
     // Create a new product via API
     axios
-      .post('http://localhost:8090/api/product', { name, description })
+      .post('http://localhost:8090/api/product', { name, brand, price, category, description })
       .then(() => {
         alert('Product created successfully!');
         navigate('/'); // Redirect to the product list page
@@ -33,6 +36,7 @@ function CreateProduct() {
     <div className="container mt-5">
       <h1>Create New Product</h1>
       <form onSubmit={handleSubmit}>
+        
         <div className="mb-3">
           <label htmlFor="name" className="form-label">
             Product Name
@@ -47,6 +51,52 @@ function CreateProduct() {
             required
           />
         </div>
+
+        <div className="mb-3">
+          <label htmlFor="brand" className="form-label">
+            Product Brand
+          </label>
+          <input
+            type="text"
+            id="brand"
+            className="form-control"
+            value={brand}
+            onChange={(e) => setBrand(e.target.value)}
+            placeholder="Enter brand name"
+            required
+          />
+        </div>
+
+        <div className="mb-3">
+          <label htmlFor="price" className="form-label">
+            Product Price
+          </label>
+          <input
+            type="text"
+            id="price"
+            className="form-control"
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
+            placeholder="Enter product price"
+            required
+          />
+        </div>
+
+        <div className="mb-3">
+          <label htmlFor="category" className="form-label">
+            Product Category
+          </label>
+          <input
+            type="text"
+            id="category"
+            className="form-control"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+            placeholder="Enter product category"
+            required
+          />
+        </div>
+
         <div className="mb-3">
           <label htmlFor="description" className="form-label">
             Product Description
@@ -60,6 +110,7 @@ function CreateProduct() {
             required
           />
         </div>
+
         <button type="submit" className="btn btn-primary">
           Create Product
         </button>

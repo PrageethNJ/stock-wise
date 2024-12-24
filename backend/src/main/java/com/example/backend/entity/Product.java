@@ -12,6 +12,9 @@ public class Product {
     private int id;
     private String name;
     private String description;
+    private String brand;
+    private double price;
+    private String category;
 
     //getters & setters
     public int getId() {
@@ -32,13 +35,22 @@ public class Product {
     public void setDescription(String description) {
         this.description = description;
     }
+    public String getBrand() { return brand; }
+    public void setBrand(String brand) { this.brand = brand; }
+    public double getPrice() { return price; }
+    public void setPrice(double price) { this.price = price; }
+    public String getCategory() { return category; }
+    public void setCategory(String category) { this.category = category; }
 
     //constructor
     public Product(){}
 
-    public Product(int id, String name, String description) {
+    public Product(int id, String name, String description, String brand, double price, String category) {
         setId(id);
         setName(name);
         setDescription(description);
+        setBrand(brand);
+        setPrice(price);
+        setCategory(category);
     }
 }

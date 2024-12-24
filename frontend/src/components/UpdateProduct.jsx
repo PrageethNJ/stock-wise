@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 function UpdateProduct() {
   const { id } = useParams(); // Get the product ID from the URL
-  const [product, setProduct] = useState({ id: '', name: '', description: '' }); // State to hold product data
+  const [product, setProduct] = useState({ id: '', name: '', brand: '', price: '', category: '', description: '' }); // State to hold product data
   const navigate = useNavigate();
 
   // Fetch product details to populate the form
@@ -43,6 +43,7 @@ function UpdateProduct() {
     <div className="container mt-5">
       <h1 className="mb-4">Update Product</h1>
       <form onSubmit={handleSubmit}>
+        
         <div className="mb-3">
           <label htmlFor="name" className="form-label">Product Name</label>
           <input
@@ -55,6 +56,46 @@ function UpdateProduct() {
             required
           />
         </div>
+
+        <div className="mb-3">
+          <label htmlFor="brand" className="form-label">Product Brand</label>
+          <input
+            type="text"
+            id="brand"
+            name="brand"
+            className="form-control"
+            value={product.brand}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className="mb-3">
+          <label htmlFor="price" className="form-label">Product Price</label>
+          <input
+            type="text"
+            id="price"
+            name="price"
+            className="form-control"
+            value={product.price}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className="mb-3">
+          <label htmlFor="categoory" className="form-label">Product Category</label>
+          <input
+            type="text"
+            id="category"
+            name="category"
+            className="form-control"
+            value={product.category}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        
         <div className="mb-3">
           <label htmlFor="description" className="form-label">Product Description</label>
           <textarea
@@ -66,6 +107,7 @@ function UpdateProduct() {
             required
           />
         </div>
+
         <button type="submit" className="btn btn-primary">Update Product</button>
       </form>
     </div>
