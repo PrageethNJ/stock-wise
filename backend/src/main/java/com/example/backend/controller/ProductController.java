@@ -49,15 +49,25 @@ public class ProductController {
     @PutMapping("/product")
     public ResponseEntity<Product> updateStudent(@RequestBody Product product) {
         Product updatedProduct = service.updateProduct(product);
-        return ResponseEntity.ok(updatedProduct); // Returns the updated product
+        if(product != null)
+            return ResponseEntity.ok(updatedProduct); // Returns the updated product
+        else
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
     //endpoint to delete a product by id
     @DeleteMapping("/product/{id}")
-    public ResponseEntity<Void> deleteProductById(@PathVariable int id){
-        service.deleteProductById(id);
-        return ResponseEntity.accepted().build(); // Returns 202 No Content
-        //return ResponseEntity.noContent().build(); // Returns 204 No Content
+    public ResponseEntity<String> deleteProductById(@PathVariable int id){
+        Product product = service.getProductById(id);
+        if(product != null) {
+            service.deleteProductById(id);
+            return new ResponseEntity<>("Deleted", HttpStatus.OK);
+            //return ResponseEntity.accepted().build(); // Returns 202 No Content
+            //return ResponseEntity.noContent().build(); // Returns 204 No Content
+        }
+        else{
+            return new ResponseEntity<>("Product not found", HttpStatus.NOT_FOUND);
+        }
     }
 
 }
