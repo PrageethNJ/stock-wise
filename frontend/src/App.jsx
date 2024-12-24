@@ -4,6 +4,7 @@ import Product from './components/Product';
 import CreateProduct from './components/CreateProduct';
 import UpdateProduct from './components/UpdateProduct';
 import NavBar from './components/NavBar';
+import AddTestData from './components/AddTestData';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/" element={<Product />} />
           <Route path="/create" element={<CreateProduct />} />
           <Route path="/update/:id" element={<UpdateProduct />} />
+          <Route path="/addtestdata" element={<AddTestData/>} />
         </Routes>
       </BrowserRouter>
     </div>

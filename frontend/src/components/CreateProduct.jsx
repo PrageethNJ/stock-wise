@@ -90,16 +90,22 @@ function CreateProduct() {
           <label htmlFor="category" className="form-label">
             Product Category
           </label>
-          <input
-            type="text"
+          <select
             id="category"
-            className="form-control"
+            className="form-select"
             value={category}
             onChange={(e) => setCategory(e.target.value)}
-            placeholder="Enter product category"
             required
-          />
+          >
+            <option value="" disabled>Select a category</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Clothing">Clothing</option>
+            <option value="Groceries">Groceries</option>
+            <option value="Furniture">Furniture</option>
+            <option value="Books">Books</option>
+          </select>
         </div>
+
 
         <div className="mb-3">
           <label htmlFor="quantity" className="form-label">

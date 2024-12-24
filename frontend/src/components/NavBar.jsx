@@ -1,7 +1,7 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-function Nav() {
+function NavBar() {
   return (
     <div className='d-flex justify-content-center py-2 shadow-sm fs-2 fw-bold'>
       Inventory Management System
@@ -9,4 +9,4 @@ function Nav() {
   )
 }
 
-export default Nav
+export default NavBar
