@@ -42,6 +42,7 @@ function Product() {
             <th scope="col">Brand</th>
             <th scope="col">Price (Rs.)</th>
             <th scope="col">Category</th>
+            <th scope="col">Quantity</th>
             <th scope="col">Description</th>
             <th scope="col">Action</th>
           </tr>
@@ -55,6 +56,7 @@ function Product() {
                 <td>{product.brand}</td>
                 <td>{product.price}</td>
                 <td>{product.category}</td>
+                <td>{product.quantity}</td>
                 <td>{product.description}</td>
                 <td>
                   <Link to={`/update/${product.id}`} className="btn btn-info btn-sm me-2">

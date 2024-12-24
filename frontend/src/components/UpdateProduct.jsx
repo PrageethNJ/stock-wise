@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 function UpdateProduct() {
   const { id } = useParams(); // Get the product ID from the URL
-  const [product, setProduct] = useState({ id: '', name: '', brand: '', price: '', category: '', description: '' }); // State to hold product data
+  const [product, setProduct] = useState({ id: '', name: '', brand: '', price: '', category: '', quantity: '', description: '' }); // State to hold product data
   const navigate = useNavigate();
 
   // Fetch product details to populate the form
@@ -91,6 +91,19 @@ function UpdateProduct() {
             name="category"
             className="form-control"
             value={product.category}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className="mb-3">
+          <label htmlFor="quantity" className="form-label">Product Quantity</label>
+          <input
+            type="text"
+            id="quantity"
+            name="quantity"
+            className="form-control"
+            value={product.quantity}
             onChange={handleChange}
             required
           />

@@ -7,7 +7,11 @@ function CreateProduct() {
   const [brand, setBrand] = useState('');
   const [price, setPrice] = useState('');
   const [category, setCategory] = useState('');
+  const [quantity, setQuantity] = useState('');
+  const [releaseDate, setReleaseDate] = useState('');
+  const [available, setAvailable] = useState('');  
   const [description, setDescription] = useState('');
+
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -21,7 +25,7 @@ function CreateProduct() {
 
     // Create a new product via API
     axios
-      .post('http://localhost:8090/api/product', { name, brand, price, category, description })
+      .post('http://localhost:8090/api/product', { name, brand, price, category, quantity, description })
       .then(() => {
         alert('Product created successfully!');
         navigate('/'); // Redirect to the product list page
@@ -93,6 +97,21 @@ function CreateProduct() {
             value={category}
             onChange={(e) => setCategory(e.target.value)}
             placeholder="Enter product category"
+            required
+          />
+        </div>
+
+        <div className="mb-3">
+          <label htmlFor="quantity" className="form-label">
+            Product Quantity
+          </label>
+          <input
+            type="text"
+            id="quantity"
+            className="form-control"
+            value={quantity}
+            onChange={(e) => setQuantity(e.target.value)}
+            placeholder="Enter product quantity"
             required
           />
         </div>
