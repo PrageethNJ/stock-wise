@@ -1,4 +1,5 @@
 services:
+  # MySQL Database
   mysql:
     image: mysql:latest
     container_name: mysql_db
@@ -11,7 +12,10 @@ services:
       - MYSQL_DATABASE=stockwise_db
       - MYSQL_USER=user
       - MYSQL_PASSWORD=password
+    networks:
+      - stockwise_network
 
+  # phpMyAdmin
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest
     container_name: phpmyadmin
@@ -23,6 +27,49 @@ services:
       - PMA_HOST=mysql
       - PMA_USER=user
       - PMA_PASSWORD=password
+    networks:
+      - stockwise_network
 
+  # Spring Boot Backend
+  backend:
+    #image: prageethnj/stockwise-springboot-backend-image:latest
+    build:
+      context: ./backend # Specify the folder where the Dockerfile is located
+      dockerfile: Dockerfile # Specify the Dockerfile name inside the backend folder
+    container_name: stockwise_backend
+    depends_on:
+      - phpmyadmin
+    ports:
+      - 8090:8090
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/stockwise_db
+      - SPRING_DATASOURCE_USERNAME=user
+      - SPRING_DATASOURCE_PASSWORD=password
+    networks:
+      - stockwise_network
+
+  # React Frontend
+  frontend:
+    #image: prageethnj/stockwise-react-frontend-image:latest
+    build:
+      context: ./frontend # Specify the folder where the Dockerfile is located
+      dockerfile: Dockerfile # Specify the Dockerfile name inside the frontend folder
+    container_name: stockwise_frontend
+    depends_on:
+      - backend
+    ports:
+      - 3000:5173 # Ensure React app runs on the expected port
+    environment:
+      - CHOKIDAR_USEPOLLING=true # Enable polling for file watching
+    volumes:
+      - ./frontend/src:/app/src:ro # Mount local src directory as read-only for live updates
+    networks:
+      - stockwise_network
+
+# Named Volume for MySQL data persistence
 volumes:
   mysql_data: {}
+
+# Custom network to ensure all services can communicate
+networks:
+  stockwise_network:
