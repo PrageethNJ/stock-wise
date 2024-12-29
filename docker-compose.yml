@@ -32,10 +32,10 @@ services:
 
   # Spring Boot Backend
   backend:
-    #image: prageethnj/stockwise-springboot-backend-image:latest
-    build:
-      context: ./backend # Specify the folder where the Dockerfile is located
-      dockerfile: Dockerfile # Specify the Dockerfile name inside the backend folder
+    image: prageethnj/springboot-backend-image:1
+    #build:
+    #  context: ./backend # Specify the folder where the Dockerfile is located
+    #  dockerfile: Dockerfile # Specify the Dockerfile name inside the backend folder
     container_name: stockwise_backend
     depends_on:
       - phpmyadmin
@@ -50,10 +50,10 @@ services:
 
   # React Frontend
   frontend:
-    #image: prageethnj/stockwise-react-frontend-image:latest
-    build:
-      context: ./frontend # Specify the folder where the Dockerfile is located
-      dockerfile: Dockerfile # Specify the Dockerfile name inside the frontend folder
+    image: prageethnj/react-frontend-image:1
+    #build:
+    #  context: ./frontend # Specify the folder where the Dockerfile is located
+    #  dockerfile: Dockerfile # Specify the Dockerfile name inside the frontend folder
     container_name: stockwise_frontend
     depends_on:
       - backend
